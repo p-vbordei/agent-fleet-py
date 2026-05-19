@@ -1,0 +1,9 @@
+fleet:
+  - name: agent-id
+    repo: p-vbordei/agent-id
+    path: ../agent-id
+    template: typescript-bun
+  - name: agent-ask
+    repo: p-vbordei/agent-ask
+    path: ../agent-ask
+    template: typescript-bun

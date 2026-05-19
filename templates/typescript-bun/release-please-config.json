@@ -1,0 +1,16 @@
+{
+  "release-type": "node",
+  "packages": {
+    ".": {
+      "package-name": "{{name}}",
+      "include-component-in-tag": false,
+      "changelog-sections": [
+        { "type": "feat", "section": "Features" },
+        { "type": "fix", "section": "Bug Fixes" },
+        { "type": "perf", "section": "Performance" },
+        { "type": "deps", "section": "Dependencies" },
+        { "type": "docs", "section": "Documentation", "hidden": false }
+      ]
+    }
+  }
+}

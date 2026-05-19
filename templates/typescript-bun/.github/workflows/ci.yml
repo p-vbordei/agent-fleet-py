@@ -1,0 +1,34 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - name: Typecheck (if defined)
+        run: |
+          if jq -e '.scripts.typecheck' package.json > /dev/null; then
+            bun run typecheck
+          fi
+      - name: Lint (if defined)
+        run: |
+          if jq -e '.scripts.lint' package.json > /dev/null; then
+            bun run lint
+          fi
+      - run: bun test
+      - name: Conformance (if defined)
+        run: |
+          if jq -e '.scripts.conformance' package.json > /dev/null; then
+            bun run conformance
+          fi
+      - name: Build binary (only if package.json declares "bin")
+        run: |
+          if [ "$(jq -r '.bin // empty' package.json)" != "" ] && [ -f src/index.ts ]; then
+            bun build --compile --outfile {{name}} src/index.ts
+          fi

@@ -1,0 +1,5 @@
+fleet:
+  - name: agent-id
+    repo: p-vbordei/agent-id
+    path: ../agent-id
+    template: typescript-bun

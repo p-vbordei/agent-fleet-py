@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "agent-fleet"
+name = "kindred-agent-fleet"
 version = "0.1.0"
 description = "Autonomous OSS-repo health for solo maintainers (Python port of @p-vbordei/agent-fleet)"
 readme = "README.md"
